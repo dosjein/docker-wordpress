@@ -1,0 +1,16 @@
+version: '2'
+services:
+    web:
+        image: shivergard/docker-wordpress
+        ports:
+            - 80:80
+            - 86:86
+        volumes:
+            - ./wp-content:/var/www/wp-content
+            - ./wp-config.php:/var/www/wp-config.php
+    mysql:
+        image: mariadb:latest
+        env_file:
+            - ./.mysql.env
+        volumes:
+            - ./storage/mysql:/var/lib/mysql
